@@ -6,9 +6,9 @@ namespace ArxsAPI.Models
 
         public int ChampionshipId { get; set; }
 
-        public ICollection<Trophy> Trophies { get; } = new List<Trophy>();
+        public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = new List<ChampionshipSeasonTrophy>();
 
-        public ICollection<Round> Rounds { get; } = new List<Round>();
+        public ICollection<ChampionshipSeasonRound> Rounds { get; } = new List<ChampionshipSeasonRound>();
 
         public ChampionshipSeason() { }
     }

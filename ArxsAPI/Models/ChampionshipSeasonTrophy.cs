@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Trophy : BaseModel
+    public class ChampionshipSeasonTrophy : BaseModel
     {
         public string Name { get; set; }
 
@@ -14,6 +14,6 @@ namespace ArxsAPI.Models
         public ChampionshipSeason ChampionshipSeason { get; set; }
 
 
-        public Trophy() { }
+        public ChampionshipSeasonTrophy() { }
     }
 }

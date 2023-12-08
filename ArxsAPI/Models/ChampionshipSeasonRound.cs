@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Round : BaseModel
+    public class ChampionshipSeasonRound : BaseModel
     {
         public int ChampionshipSeasonId { get; set; }
 
@@ -12,6 +12,6 @@ namespace ArxsAPI.Models
         public TrackConfiguration TrackConfiguration { get; set; }
 
 
-        public Round() { }
+        public ChampionshipSeasonRound() { }
     }
 }
