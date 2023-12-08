@@ -11,6 +11,8 @@ namespace ArxsAPI.Models
 
         public ChampionshipSeason ChampionshipSeason { get; set; } = null!;
 
+        public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = new List<ChampionshipSeasonTrophy>();
+
         public Country Country { get; set; } = null!;
 
         public TeamChampionshipSeason() { }

@@ -9,9 +9,11 @@ namespace ArxsAPI.Models
         public int ChampionshipSeasonId { get; set; }
 
 
-        public ScoreSystem ScoreSystem { get; set; }
+        public ScoreSystem ScoreSystem { get; set; } = null!;
 
-        public ChampionshipSeason ChampionshipSeason { get; set; }
+        public ChampionshipSeason ChampionshipSeason { get; set; } = null!;
+
+        public ICollection<TeamChampionshipSeason> Entries { get; set; } = new List<TeamChampionshipSeason>();
 
 
         public ChampionshipSeasonTrophy() { }

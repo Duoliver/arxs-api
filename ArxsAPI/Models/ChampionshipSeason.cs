@@ -10,6 +10,9 @@ namespace ArxsAPI.Models
 
         public ICollection<ChampionshipSeasonRound> Rounds { get; } = new List<ChampionshipSeasonRound>();
 
+        public ICollection<TeamChampionshipSeason> Entries { get; set; } = new List<TeamChampionshipSeason>();
+
+
         public ChampionshipSeason() { }
     }
 }
