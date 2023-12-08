@@ -13,7 +13,8 @@ namespace ArxsAPI.Models
 
         public Championship? NextChampionship { get; set; }
 
-        // TODO add relationship lists
+        public ICollection<ChampionshipSeason> ChampionshipSeasons { get; } = new List<ChampionshipSeason>();
+
 
         public Championship() { }
     }

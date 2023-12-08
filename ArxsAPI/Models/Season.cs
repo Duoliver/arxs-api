@@ -10,7 +10,7 @@ namespace ArxsAPI
         public int Year { get; set; }
 
 
-        // TODO add relationship lists
+        public ICollection<ChampionshipSeason> ChampionshipSeasons { get; } = new List<ChampionshipSeason>();
 
 
         public Season() { }

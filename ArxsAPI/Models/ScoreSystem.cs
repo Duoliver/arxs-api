@@ -2,7 +2,7 @@ namespace ArxsAPI.Models
 {
     public class ScoreSystem : BaseModel
     {
-        // TODO add relationship lists
+        public ICollection<Score> Scores { get; } = new List<Score>();
 
         public ScoreSystem() { }
     }

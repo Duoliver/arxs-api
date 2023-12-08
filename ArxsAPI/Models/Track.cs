@@ -11,7 +11,8 @@ namespace ArxsAPI.Models
 
         public Country Country { get; set; }
 
-        // TODO add relationship lists
+        public ICollection<TrackConfiguration> TrackConfigurations { get; } = new List<TrackConfiguration>();
+
 
         public Track() { }
     }

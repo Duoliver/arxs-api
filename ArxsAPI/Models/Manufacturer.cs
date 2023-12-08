@@ -9,7 +9,7 @@ namespace ArxsAPI.Models
 
         public Country Country { get; set; }
 
-        // TODO add relationship lists
+        public ICollection<Car> Cars { get; } = new List<Car>();
 
 
         public Manufacturer() { }
