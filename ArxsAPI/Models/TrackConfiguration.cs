@@ -9,6 +9,8 @@ namespace ArxsAPI.Models
 
         public Track Track { get; set; }
 
+        public ICollection<Round> Rounds { get; } = new List<Round>();
+
 
         public TrackConfiguration() { }
     }
