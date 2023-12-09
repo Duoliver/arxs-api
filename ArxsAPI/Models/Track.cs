@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Track: BaseModel
+    public class Track : BaseModel
     {
         public string Name { get; set; }
 

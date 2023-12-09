@@ -12,5 +12,8 @@ namespace ArxsAPI.Models
         public ChampionshipSeasonTrophy Trophy { get; set; } = null!;
 
         public ChampionshipSeasonRound Round { get; set; } = null!;
+
+
+        public ChampionshipSeasonTrophyRound () { }
     }
 }
