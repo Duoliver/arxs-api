@@ -14,7 +14,9 @@ namespace ArxsAPI.Models
 
         public Car CarModel { get; set; } = null!;
 
-        public Team Team { get; set; }
+        public Team Team { get; set; } = null!;
+
+        public ICollection<TeamChampionshipSeasonDriverCar> DriversVariants { get; } = new List<TeamChampionshipSeasonDriverCar>();
 
 
         public TeamCar() { }

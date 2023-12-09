@@ -9,11 +9,13 @@ namespace ArxsAPI.Models
         public int? CountryId { get; set; }
 
 
-        public Driver Driver { get; set; }
+        public Driver Driver { get; set; } = null!;
 
-        public TeamChampionshipSeason Entry { get; set; }
+        public TeamChampionshipSeason Entry { get; set; } = null!;
 
-        public Country? Country { get; set; }
+        public Country? Country { get; set; } = null!;
+
+        public TeamChampionshipSeasonDriverCar EntryCar { get; set; } = null!;
 
 
         public TeamChampionshipSeasonDriver() { }
