@@ -18,7 +18,7 @@ namespace ArxsAPI.Models
         public Country Nationality { get; set; }
 
 
-        public ICollection<TeamChampionshipSeasonDriver> TeamEntries { get; } = new List<TeamChampionshipSeasonDriver>();
+        public ICollection<TeamChampionshipSeasonDriver> TeamsEntries { get; } = new List<TeamChampionshipSeasonDriver>();
 
 
         public Driver() { }

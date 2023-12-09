@@ -15,7 +15,7 @@ namespace ArxsAPI.Models
         
         public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = new List<ChampionshipSeasonTrophy>();
 
-        public ICollection<TeamChampionshipSeasonDriver> EntrantDrivers { get; } = new List<TeamChampionshipSeasonDriver>();
+        public ICollection<TeamChampionshipSeasonDriver> DriversEntries { get; } = new List<TeamChampionshipSeasonDriver>();
 
         public TeamChampionshipSeason() { }
     }
