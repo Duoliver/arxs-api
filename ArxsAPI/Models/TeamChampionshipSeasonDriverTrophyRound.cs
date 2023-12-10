@@ -1,8 +1,12 @@
+using ArxsAPI.Enums;
+
 namespace ArxsAPI.Models
 {
     public class TeamChampionshipSeasonDriverTrophyRound : BaseModel
     {
         public int Position { get; set; }
+
+        public TrophyRoundDriverStatus Status { get; set; }
         
         public int DriverEntryId { get; set; }
 
