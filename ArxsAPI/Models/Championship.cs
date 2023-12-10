@@ -9,9 +9,9 @@ namespace ArxsAPI.Models
         public int? NextChampionshipId { get; set; }
 
 
-        public Championship? PreviousChampionship { get; set; }
+        public Championship? PreviousChampionship { get; set; } = null!;
 
-        public Championship? NextChampionship { get; set; }
+        public Championship? NextChampionship { get; set; } = null!;
 
         public ICollection<ChampionshipSeason> ChampionshipSeasons { get; } = new List<ChampionshipSeason>();
 

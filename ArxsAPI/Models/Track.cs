@@ -9,7 +9,7 @@ namespace ArxsAPI.Models
         public int CountryId { get; set; }
 
 
-        public Country Country { get; set; }
+        public Country Country { get; set; } = null!;
 
         public ICollection<TrackConfiguration> TrackConfigurations { get; } = new List<TrackConfiguration>();
 

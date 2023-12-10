@@ -9,7 +9,7 @@ namespace ArxsAPI.Models
         public int ScoreSystemId { get; set; }
 
 
-        public ScoreSystem ScoreSystem { get; set; }
+        public ScoreSystem ScoreSystem { get; set; } = null!;
 
 
         public Score() { }

@@ -9,9 +9,9 @@ namespace ArxsAPI.Models
         public int TrackConfigurationId { get; set; }
 
 
-        public ChampionshipSeason ChampionshipSeason { get; set; }
+        public ChampionshipSeason ChampionshipSeason { get; set; } = null!;
 
-        public TrackConfiguration TrackConfiguration { get; set; }
+        public TrackConfiguration TrackConfiguration { get; set; } = null!;
 
         public ICollection<ChampionshipSeasonTrophyRound> RoundTrophies { get; } = new List<ChampionshipSeasonTrophyRound>();
 

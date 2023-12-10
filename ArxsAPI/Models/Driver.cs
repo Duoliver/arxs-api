@@ -6,17 +6,18 @@ namespace ArxsAPI.Models
 
         public string Surname { get; set; }
 
-        public DateOnly DateOfBirth { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
+
+        public string? CityOfOrigin { get; set; }
 
         public int CountryOfOriginId { get; set; }
 
         public int NationalityId { get; set; }
 
 
-        public Country CountryOfOrigin { get; set; }
+        public Country CountryOfOrigin { get; set; } = null!;
 
-        public Country Nationality { get; set; }
-
+        public Country Nationality { get; set; } = null!;
 
         public ICollection<TeamChampionshipSeasonDriver> TeamsEntries { get; } = new List<TeamChampionshipSeasonDriver>();
 

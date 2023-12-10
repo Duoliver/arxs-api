@@ -7,7 +7,7 @@ namespace ArxsAPI.Models
         public int CountryId { get; set; }
 
 
-        public Country Country { get; set; }
+        public Country Country { get; set; } = null!;
 
         public ICollection<Car> Cars { get; } = new List<Car>();
 

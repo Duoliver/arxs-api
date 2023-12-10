@@ -7,9 +7,9 @@ namespace ArxsAPI.Models
         public int DriverEntryId { get; set; }
 
         
-        public TeamCar TeamCar { get; set; }
+        public TeamCar TeamCar { get; set; } = null!;
 
-        public TeamChampionshipSeasonDriver DriverEntry { get; set; }
+        public TeamChampionshipSeasonDriver DriverEntry { get; set; } = null!;
 
 
         public TeamChampionshipSeasonDriverCar() { }
