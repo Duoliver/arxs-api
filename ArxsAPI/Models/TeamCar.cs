@@ -1,10 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ArxsAPI.Models
 {
     public class TeamCar : BaseModel
     {
         public string? Suffix { get; set; }
 
-        // TODO fixed length 4
+        [Length(4, 4)]
         public int? Year { get; set; }
 
         public int CarModelId { get; set; }
