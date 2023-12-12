@@ -2,7 +2,9 @@ namespace ArxsAPI.Models
 {
     public class TeamChampionshipSeason : BaseModel
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
+
+        public string? Colour { get; set; }
 
 
         public int TeamId { get; set; }
