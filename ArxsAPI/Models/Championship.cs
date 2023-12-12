@@ -3,6 +3,8 @@ namespace ArxsAPI.Models
     public class Championship : BaseModel
     {
         public string Name { get; set; }
+
+        public string? Alias { get; set; }
         
         public int? PreviousChampionshipId { get; set; }
 
