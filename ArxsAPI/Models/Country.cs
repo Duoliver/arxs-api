@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArxsAPI.Models
 {
-    public class Country : BaseModel
+    public class Country : Entity
     {
         public string Name { get; set; }
         

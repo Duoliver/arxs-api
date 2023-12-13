@@ -3,7 +3,7 @@ using ArxsAPI.Models;
 namespace ArxsAPI.Repositories
 {
     public interface IRepository<T>
-        where T : BaseModel
+        where T : Entity
     {
         Task<T> Add(T model);
         Task<T> Delete(int id);

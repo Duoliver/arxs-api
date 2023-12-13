@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Score : BaseModel
+    public class Score : Entity
     {
         public int Position { get; set; }
 

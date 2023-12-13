@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Driver : BaseModel
+    public class Driver : Entity
     {
         public string Name { get; set; }
 

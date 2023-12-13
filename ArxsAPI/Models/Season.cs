@@ -3,7 +3,7 @@ using ArxsAPI.Models;
 
 namespace ArxsAPI
 {
-    public class Season : BaseModel
+    public class Season : Entity
     {
         public string Name { get; set; }
 

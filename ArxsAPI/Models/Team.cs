@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Team : BaseModel
+    public class Team : Entity
     {
         public string Name { get; set; }
 

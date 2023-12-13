@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ArxsAPI.Models
 {
-    public class TeamCar : BaseModel
+    public class TeamCar : Entity
     {
         public string? Suffix { get; set; }
 

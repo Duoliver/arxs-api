@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public abstract class BaseModel
+    public abstract class Entity
     {
         public int Id { get; set; }
     }
