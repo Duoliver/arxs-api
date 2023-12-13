@@ -1,0 +1,14 @@
+using ArxsAPI.Models;
+
+namespace ArxsAPI.Repositories
+{
+    public interface IRepository<T>
+        where T : BaseModel
+    {
+        Task<T> Add(T model);
+        Task<T> Delete(int id);
+        Task<T> Update(T model);
+        Task<T> GetByID(int id);
+        Task<List<T>> GetAll();
+    }
+}
