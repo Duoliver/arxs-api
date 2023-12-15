@@ -6,21 +6,21 @@ namespace ArxsAPI.Services
     public abstract class EntityService<TEntity> : IService<TEntity>
         where TEntity : Entity
     {
-        private readonly EntityRepository<TEntity> _repository;
+        private readonly EntityRepository<TEntity> Repository;
         
         public EntityService(EntityRepository<TEntity> repository)
         {
-            _repository = repository;
+            Repository = repository;
         }
 
         public async Task<TEntity> Add(TEntity model)
         {
-            return await _repository.Add(model);
+            return await Repository.Add(model);
         }
 
         public async Task<TEntity> Delete(int id)
         {
-            var deletedModel = await _repository.Delete(id);
+            var deletedModel = await Repository.Delete(id);
             if (deletedModel == null)
             {
                 // TODO handle model not found 
@@ -30,12 +30,12 @@ namespace ArxsAPI.Services
 
         public async Task<List<TEntity>> GetAll()
         {
-            return await _repository.GetAll();
+            return await Repository.GetAll();
         }
 
         public async Task<TEntity> GetById(int id)
         {
-            var foundModel = await _repository.GetById(id);
+            var foundModel = await Repository.GetById(id);
             if (foundModel == null)
             {
                  // TODO handle model not found
@@ -45,7 +45,7 @@ namespace ArxsAPI.Services
 
         public async Task<TEntity> Update(TEntity model)
         {
-            return await _repository.Update(model);
+            return await Repository.Update(model);
         }
     }
 }

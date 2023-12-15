@@ -7,7 +7,7 @@ namespace ArxsAPI.Repositories
     public abstract class EntityRepository<TEntity>(ArxsDbContext context) : IRepository<TEntity>
         where TEntity : Entity
     {
-        private readonly ArxsDbContext context = context;
+        protected readonly ArxsDbContext context = context;
 
         public async Task<TEntity> Add(TEntity model)
         {

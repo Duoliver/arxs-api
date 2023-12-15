@@ -3,11 +3,18 @@ using ArxsAPI.Repositories;
 
 namespace ArxsAPI.Services
 {
-    public class CountryService(CountryRepository repository) : EntityService<Country>(repository)
+    public class CountryService : EntityService<Country>
     {
+        private readonly CountryRepository Repository;
+
+        public CountryService(CountryRepository repository) : base(repository)
+        {
+            Repository = repository;
+        }
+        
         public async Task<List<Country>> Import(Stream file)
         {
-            List<Country> Countries = new List<Country>();
+            List<Country> Countries = [];
             using (var reader = new StreamReader(file))
             {
                 var header = reader.ReadLine();
@@ -29,7 +36,7 @@ namespace ArxsAPI.Services
                     Countries.Add(CurrentCountry);
                 }
             }
-            await Task.Run(() => {});
+            await Repository.AddMany(Countries);
             return Countries;
         }
     }
