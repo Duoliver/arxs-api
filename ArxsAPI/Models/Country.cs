@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ArxsAPI.Models
 {
@@ -10,6 +11,10 @@ namespace ArxsAPI.Models
         public string Iso3 { get; set; }
 
         public string Adjective { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Team> Teams { get; } = new List<Team>();
+
 
         public Country() { } 
     }

@@ -1,5 +1,6 @@
 using ArxsAPI.Data;
 using ArxsAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ArxsAPI.Repositories
 {
@@ -10,6 +11,13 @@ namespace ArxsAPI.Repositories
             context.Set<Country>().AddRange(countries);
             await context.SaveChangesAsync();
             return countries;
+        }
+
+        public async Task<Country> GetByIso3(string iso3)
+        {
+            var query = context.Countries.Where(c => c.Iso3 == iso3);
+
+            return await query.FirstAsync();
         }
     }
 }

@@ -39,5 +39,10 @@ namespace ArxsAPI.Services
             await Repository.AddMany(Countries);
             return Countries;
         }
+
+        public async Task<Country> GetByIso3(string iso3)
+        {
+            return await Repository.GetByIso3(iso3);
+        }
     }
 }
