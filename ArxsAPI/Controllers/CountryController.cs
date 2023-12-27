@@ -1,4 +1,5 @@
 using ArxsAPI.Models;
+using ArxsAPI.Responses;
 using ArxsAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,19 @@ namespace ArxsAPI.Controllers
         {
             if (file == null || file.Length == 0)
             {
-                // TODO: create error object with message, isSuccess and isResponse attributes
-                return BadRequest("Nenhum arquivo foi recebido");
+                return BadRequest(new Response("No file was received", false));
             }
-            return Ok(await Service.Import(file.OpenReadStream()));
+
+            try
+            {
+                return Ok(new PayloadResponse<List<Country>>(
+                    await Service.Import(file.OpenReadStream())
+                ));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new Response(e.Message, false));
+            }
         }
     }
 }

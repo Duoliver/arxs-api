@@ -1,3 +1,4 @@
+using ArxsAPI.Exceptions;
 using ArxsAPI.Models;
 using ArxsAPI.Repositories;
 
@@ -29,7 +30,7 @@ namespace ArxsAPI.Services
             
             if (countries.Count == 0)
             {
-                throw new Exception("No countries found");
+                throw new CountryNotFoundException("No countries found");
             }
 
             values.ForEach(row =>
@@ -41,7 +42,7 @@ namespace ArxsAPI.Services
 
                     if (country == null)
                     {
-                        throw new Exception($"No country was found with the following ISO-3: { iso3 }");
+                        throw new CountryNotFoundException($"No country was found with the following ISO-3: { iso3 }");
                     }
 
                     teams.Add(new Team(name, country.Id, null));
