@@ -19,6 +19,12 @@ namespace ArxsAPI.Mappings
             
             builder.Property(c => c.Adjective)
                 .HasColumnName("adjective");
+
+            builder.HasIndex(c => c.Name)
+                .IsUnique();
+            
+            builder.HasIndex(c => c.Iso3)
+                .IsUnique();
         }
     }
 }

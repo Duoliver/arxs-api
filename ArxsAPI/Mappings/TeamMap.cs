@@ -19,6 +19,9 @@ namespace ArxsAPI.Mappings
 
             builder.Property(t => t.PreviousTeamId)
                 .HasColumnName("previous_team_id");
+
+            builder.HasIndex(t => t.Name)
+                .IsUnique();
         }
     }
 }
