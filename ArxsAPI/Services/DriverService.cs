@@ -62,7 +62,7 @@ namespace ArxsAPI.Services
                 }
 
             );
-            // await Repository.AddMany(drivers);
+            await Repository.AddMany(drivers);
 
             return drivers;
         }
