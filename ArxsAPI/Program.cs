@@ -17,6 +17,8 @@ class Program
         builder.Services.AddScoped<CsvService>();
         builder.Services.AddScoped<TeamRepository>();
         builder.Services.AddScoped<TeamService>();
+        builder.Services.AddScoped<DriverService>();
+        builder.Services.AddScoped<DriverRepository>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters
