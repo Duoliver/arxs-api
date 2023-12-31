@@ -21,6 +21,9 @@ namespace ArxsAPI.Models
         [JsonIgnore]
         public ICollection<Driver> NativeDrivers { get; } = new List<Driver>();
 
+        [JsonIgnore]
+        public ICollection<Manufacturer> Manufacturers { get; } = new List<Manufacturer>();
+
         public Country() { } 
     }
 }

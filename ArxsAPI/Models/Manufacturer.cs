@@ -9,7 +9,14 @@ namespace ArxsAPI.Models
 
         public Country Country { get; set; } = null!;
 
-        public ICollection<Car> Cars { get; } = new List<Car>();
+        // public ICollection<Car> Cars { get; } = new List<Car>();
+
+
+        public Manufacturer(string name, int countryId)
+        {
+            Name = name;
+            CountryId = countryId;
+        }
 
 
         public Manufacturer() { }

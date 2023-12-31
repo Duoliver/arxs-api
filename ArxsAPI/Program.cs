@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using ArxsAPI.Data;
+﻿using ArxsAPI.Data;
 using ArxsAPI.Repositories;
 using ArxsAPI.Services;
 
@@ -19,6 +18,8 @@ class Program
         builder.Services.AddScoped<TeamService>();
         builder.Services.AddScoped<DriverService>();
         builder.Services.AddScoped<DriverRepository>();
+        builder.Services.AddScoped<ManufacturerService>();
+        builder.Services.AddScoped<ManufacturerRepository>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters
@@ -26,7 +27,6 @@ class Program
                     .Single();
                 jsonInputFormatter.SupportedMediaTypes.Add("application/csp-report");
             });
-            // .AddJsonOptions(o => o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
         var app = builder.Build();
         app.UsePathBase("/api");
