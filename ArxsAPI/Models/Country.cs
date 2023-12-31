@@ -15,6 +15,11 @@ namespace ArxsAPI.Models
         [JsonIgnore]
         public ICollection<Team> Teams { get; } = new List<Team>();
 
+        [JsonIgnore]
+        public ICollection<Driver> NationalDrivers { get; } = new List<Driver>();
+
+        [JsonIgnore]
+        public ICollection<Driver> NativeDrivers { get; } = new List<Driver>();
 
         public Country() { } 
     }
