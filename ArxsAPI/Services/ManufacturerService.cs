@@ -42,7 +42,7 @@ namespace ArxsAPI.Services
                 }
             );
 
-            // await Repository.AddMany(manufacturers);
+            await Repository.AddMany(manufacturers);
 
             return manufacturers;
         }
