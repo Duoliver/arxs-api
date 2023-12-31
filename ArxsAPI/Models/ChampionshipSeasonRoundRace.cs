@@ -2,7 +2,7 @@ using ArxsAPI.Enums;
 
 namespace ArxsAPI.Models
 {
-    public class ChampionshipSeasonRoundRace : BaseModel
+    public class ChampionshipSeasonRoundRace : Entity
     {
         public int Order { get; set; }
 

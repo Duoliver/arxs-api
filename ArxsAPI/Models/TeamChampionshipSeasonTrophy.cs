@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class TeamChampionshipSeasonTrophy : BaseModel
+    public class TeamChampionshipSeasonTrophy : Entity
     {
         public int EntryId { get; set; }
 

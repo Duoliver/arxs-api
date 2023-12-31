@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class TrackConfiguration : BaseModel
+    public class TrackConfiguration : Entity
     {
         public int Year { get; set; }
 

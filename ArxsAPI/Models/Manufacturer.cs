@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Manufacturer : BaseModel
+    public class Manufacturer : Entity
     {
         public string Name { get; set; }
 

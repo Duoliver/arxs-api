@@ -1,6 +1,6 @@
 namespace ArxsAPI.Models
 {
-    public class Driver : BaseModel
+    public class Driver : Entity
     {
         public string Name { get; set; }
 
@@ -23,5 +23,17 @@ namespace ArxsAPI.Models
 
 
         public Driver() { }
+
+        public Driver(
+            string name,
+            string surname,
+            int countryOfOriginId,
+            int nationalityId
+        ) {
+            Name = name;
+            Surname = surname;
+            CountryOfOriginId = countryOfOriginId;
+            NationalityId = nationalityId;
+        }
     }
 }

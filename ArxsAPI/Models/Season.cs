@@ -1,12 +1,13 @@
+using System.ComponentModel.DataAnnotations;
 using ArxsAPI.Models;
 
 namespace ArxsAPI
 {
-    public class Season : BaseModel
+    public class Season : Entity
     {
         public string Name { get; set; }
 
-        // TODO fixed size 4
+        [Length(4, 4)]
         public int Year { get; set; }
 
 

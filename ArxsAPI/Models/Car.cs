@@ -1,10 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ArxsAPI.Models
 {
-    public class Car : BaseModel
+    public class Car : Entity
     {
         public string Name { get; set; }
 
-        // TODO fixed size 4
+        [Length(4, 4)]
         public int Year { get; set; }
 
         public int ManufacturerId { get; set; }
