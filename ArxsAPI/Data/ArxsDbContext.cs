@@ -9,6 +9,7 @@ namespace ArxsAPI.Data
     {
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<Driver> Drivers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,19 @@ namespace ArxsAPI.Data
                 .WithMany(c => c.Teams)
                 .HasForeignKey(t => t.CountryId);
             modelBuilder.ApplyConfiguration(new TeamMap());
+
+            modelBuilder.Entity<Driver>()
+                .ToTable("driver")
+                .HasKey(d => d.Id);
+            modelBuilder.Entity<Driver>()
+                .HasOne(d => d.CountryOfOrigin)
+                .WithMany(c => c.NativeDrivers)
+                .HasForeignKey(d => d.CountryOfOriginId);
+            modelBuilder.Entity<Driver>()
+                .HasOne(d => d.Nationality)
+                .WithMany(c => c.NationalDrivers)
+                .HasForeignKey(d => d.NationalityId);
+            modelBuilder.ApplyConfiguration(new DriverMap());
         }
     }
 }
