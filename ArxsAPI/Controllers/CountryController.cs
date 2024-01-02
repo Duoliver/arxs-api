@@ -8,9 +8,7 @@ namespace ArxsAPI.Controllers
     [Route("countries")]
     [ApiController]
     public class CountryController(CountryService service) : EntityController<Country, CountryService>(service)
-    {
-        private readonly CountryService Service = service;
-        
+    {        
         [HttpPost("import")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Import([FromForm] IFormFile file)

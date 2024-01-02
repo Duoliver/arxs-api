@@ -3,6 +3,7 @@ using System;
 using ArxsAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ArxsAPI.Migrations
 {
     [DbContext(typeof(ArxsDbContext))]
-    partial class ArxsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231231193705_Manufacturer")]
+    partial class Manufacturer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,35 +27,6 @@ namespace ArxsAPI.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "round_race_driver_status", new[] { "undefined", "disqualified", "classified", "winner", "retired", "classified_retired" });
             NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "trophy_round_driver_status", new[] { "undefined", "disqualified", "classified", "winner", "did_not_qualify" });
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("ArxsAPI.Models.Car", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ManufacturerId")
-                        .HasColumnType("integer")
-                        .HasColumnName("manufacturer_id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("name");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("integer")
-                        .HasColumnName("year");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ManufacturerId");
-
-                    b.ToTable("car", (string)null);
-                });
 
             modelBuilder.Entity("ArxsAPI.Models.Country", b =>
                 {
@@ -197,17 +171,6 @@ namespace ArxsAPI.Migrations
                     b.ToTable("team", (string)null);
                 });
 
-            modelBuilder.Entity("ArxsAPI.Models.Car", b =>
-                {
-                    b.HasOne("ArxsAPI.Models.Manufacturer", "Manufacturer")
-                        .WithMany("Cars")
-                        .HasForeignKey("ManufacturerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Manufacturer");
-                });
-
             modelBuilder.Entity("ArxsAPI.Models.Driver", b =>
                 {
                     b.HasOne("ArxsAPI.Models.Country", "CountryOfOrigin")
@@ -264,11 +227,6 @@ namespace ArxsAPI.Migrations
                     b.Navigation("NativeDrivers");
 
                     b.Navigation("Teams");
-                });
-
-            modelBuilder.Entity("ArxsAPI.Models.Manufacturer", b =>
-                {
-                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("ArxsAPI.Models.Team", b =>

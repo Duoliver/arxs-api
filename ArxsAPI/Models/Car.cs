@@ -18,5 +18,12 @@ namespace ArxsAPI.Models
 
 
         public Car() { }
+
+        public Car(string name, int year, int manufacturerId)
+        {
+            Name = name;
+            Year = year;
+            ManufacturerId = manufacturerId;
+        }
     }
 }

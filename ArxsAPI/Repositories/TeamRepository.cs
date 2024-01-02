@@ -12,13 +12,5 @@ namespace ArxsAPI.Repositories
 
             return await query.FirstAsync();
         }
-
-        public async Task<ICollection<Team>> AddMany(ICollection<Team> teams)
-        {
-            context.Teams.AddRange(teams);
-            await context.SaveChangesAsync();
-
-            return teams;
-        }
     }
 }

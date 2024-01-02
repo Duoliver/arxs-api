@@ -8,6 +8,6 @@ namespace ArxsAPI.Controllers
         where TEntity : Entity
         where TService : EntityService<TEntity>
     {
-        private readonly TService Service = service;
+        protected readonly TService Service = service;
     }
 }

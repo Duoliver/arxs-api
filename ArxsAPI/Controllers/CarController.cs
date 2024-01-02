@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ArxsAPI.Controllers
 {
-    [Route("teams")]
+    [Route("cars")]
     [ApiController]
-    public class TeamController(TeamService service) : EntityController<Team, TeamService>(service)
+    public class CarController(CarService service) : EntityController<Car, CarService>(service)
     {
         [HttpPost("import")]
         [Consumes("multipart/form-data")]
@@ -20,7 +20,7 @@ namespace ArxsAPI.Controllers
 
             try 
             {
-                return Ok(new PayloadResponse<List<Team>>(
+                return Ok(new PayloadResponse<List<Car>>(
                     await Service.Import(file.OpenReadStream())
                 ));
             }
@@ -28,7 +28,6 @@ namespace ArxsAPI.Controllers
             {
                 return BadRequest(new Response(e.Message, false));
             }
-
         }
     }
 }

@@ -5,13 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ArxsAPI.Controllers
 {
-
     [Route("drivers")]
     [ApiController]
     public class DriverController(DriverService service) : EntityController<Driver, DriverService>(service)
     {
-        private readonly DriverService Service = service;
-
         [HttpPost("import")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Import([FromForm] IFormFile file)

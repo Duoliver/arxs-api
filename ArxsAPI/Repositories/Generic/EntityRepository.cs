@@ -46,5 +46,13 @@ namespace ArxsAPI.Repositories
             await context.SaveChangesAsync();
             return model;
         }
+
+        public async Task<ICollection<TEntity>> AddMany(ICollection<TEntity> models)
+        {
+            context.Set<TEntity>().AddRange(models);
+            await context.SaveChangesAsync();
+
+            return models;
+        }
     }
 }
