@@ -39,7 +39,7 @@ namespace ArxsAPI.Services
                 }
             );
 
-            // await Repository.AddMany(cars);
+            await Repository.AddMany(cars);
 
             return cars;
         }
