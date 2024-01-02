@@ -17,6 +17,9 @@ namespace ArxsAPI.Mappings
             builder.Property(t => t.City)
                 .HasColumnName("city");
             
+            builder.Property(t => t.CountryId)
+                .HasColumnName("country_id");
+            
             builder.HasIndex(t => t.Name)
                 .IsUnique();
         }
