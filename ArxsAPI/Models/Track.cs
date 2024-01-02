@@ -15,5 +15,11 @@ namespace ArxsAPI.Models
 
 
         public Track() { }
+
+        public Track(string name, int countryId)
+        {
+            Name = name;
+            CountryId = countryId;
+        }
     }
 }
