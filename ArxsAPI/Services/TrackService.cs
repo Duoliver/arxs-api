@@ -46,7 +46,7 @@ namespace ArxsAPI.Services
                 }
             );
 
-            // await Repository.AddMany(tracks);
+            await Repository.AddMany(tracks);
 
             return tracks;
         }
