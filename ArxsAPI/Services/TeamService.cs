@@ -23,7 +23,7 @@ namespace ArxsAPI.Services
             
             if (countries.Count == 0)
             {
-                throw new CountryNotFoundException("No countries found");
+                throw new CountryNotFoundException("No countries were found");
             }
 
             values.ForEach(row =>

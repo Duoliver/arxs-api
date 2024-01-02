@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ArxsAPI.Models
 {
     public class Manufacturer : Entity
@@ -9,7 +11,8 @@ namespace ArxsAPI.Models
 
         public Country Country { get; set; } = null!;
 
-        // public ICollection<Car> Cars { get; } = new List<Car>();
+        [JsonIgnore]
+        public ICollection<Car> Cars { get; } = new List<Car>();
 
 
         public Manufacturer(string name, int countryId)

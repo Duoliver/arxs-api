@@ -20,6 +20,8 @@ class Program
         builder.Services.AddScoped<DriverRepository>();
         builder.Services.AddScoped<ManufacturerService>();
         builder.Services.AddScoped<ManufacturerRepository>();
+        builder.Services.AddScoped<CarService>();
+        builder.Services.AddScoped<CarRepository>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters

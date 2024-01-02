@@ -5,22 +5,15 @@ using ArxsAPI.Repositories;
 
 namespace ArxsAPI.Services
 {
-    public class DriverService : EntityService<Driver>
+    public class DriverService(
+        DriverRepository repository,
+        CountryService countryService,
+        CsvService csvService
+        ) : EntityService<Driver>(repository)
     {
-        private readonly DriverRepository Repository;
-        private readonly CountryService CountryService;
-        private readonly CsvService CsvService;
-
-        public DriverService(
-            DriverRepository repository,
-            CountryService countryService,
-            CsvService csvService
-        ) : base(repository)
-        {
-            Repository = repository;
-            CountryService = countryService;
-            CsvService = csvService;
-        }
+        private readonly DriverRepository Repository = repository;
+        private readonly CountryService CountryService = countryService;
+        private readonly CsvService CsvService = csvService;
 
         public async Task<List<Driver>> Import(Stream file)
         {
@@ -31,7 +24,7 @@ namespace ArxsAPI.Services
             
             if (countries.Count == 0)
             {
-                throw new CountryNotFoundException("No countries found");
+                throw new CountryNotFoundException("No countries were found");
             }
 
             values.ForEach(row =>
