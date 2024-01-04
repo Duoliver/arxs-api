@@ -11,16 +11,16 @@ namespace ArxsAPI.Services
         CsvService csvService
         ) : EntityService<Track>(repository)
     {
-        private readonly TrackRepository Repository = repository;
-        private readonly CountryService CountryService = countryService;
-        private readonly CsvService CsvService = csvService;
+        private readonly TrackRepository _repository = repository;
+        private readonly CountryService _countryService = countryService;
+        private readonly CsvService _csvService = csvService;
 
         public async Task<List<Track>> Import(Stream file)
         {
-            List<string[]> values = CsvService.GetStringsFromFile(file, ',');
+            List<string[]> values = _csvService.GetStringsFromFile(file, ',');
             List<Track> tracks = [];
 
-            List<Country> countries = await CountryService.GetAll();
+            List<Country> countries = await _countryService.GetAll();
             
             if (EmptyHelper.IsEmpty(countries))
             {
@@ -46,7 +46,7 @@ namespace ArxsAPI.Services
                 }
             );
 
-            await Repository.AddMany(tracks);
+            await _repository.AddMany(tracks);
 
             return tracks;
         }
