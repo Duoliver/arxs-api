@@ -77,6 +77,15 @@ namespace ArxsAPI.Data
                 .WithMany(c => c.Tracks)
                 .HasForeignKey(t => t.CountryId);
             modelBuilder.ApplyConfiguration(new TrackMap());
+
+            modelBuilder.Entity<TrackConfiguration>()
+                .ToTable("track_configuration")
+                .HasKey(tc => tc.Id);
+            modelBuilder.Entity<TrackConfiguration>()
+                .HasOne(tc => tc.Track)
+                .WithMany(t => t.TrackConfigurations)
+                .HasForeignKey(tc => tc.TrackId);
+            modelBuilder.ApplyConfiguration(new TrackConfigurationMap());
         }
     }
 }

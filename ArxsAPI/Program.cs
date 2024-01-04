@@ -24,6 +24,8 @@ class Program
         builder.Services.AddScoped<CarRepository>();
         builder.Services.AddScoped<TrackService>();
         builder.Services.AddScoped<TrackRepository>();
+        builder.Services.AddScoped<TrackConfigurationService>();
+        builder.Services.AddScoped<TrackConfigurationRepository>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters
