@@ -1,4 +1,6 @@
+using ArxsAPI.Common;
 using ArxsAPI.Data;
+using ArxsAPI.Exceptions;
 using ArxsAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,14 +18,8 @@ namespace ArxsAPI.Repositories
             return model;
         }
 
-        public async Task<TEntity> Delete(int id)
+        public async Task<TEntity> Delete(TEntity model)
         {
-            var model = await context.Set<TEntity>().FindAsync(id);
-            if (model == null)
-            {
-                return model;
-            }
-
             context.Set<TEntity>().Remove(model);
             await context.SaveChangesAsync();
 
@@ -37,13 +33,20 @@ namespace ArxsAPI.Repositories
 
         public async Task<TEntity> GetById(int id)
         {
-            return await context.Set<TEntity>().FindAsync(id);
+            var model = await context.Set<TEntity>().FindAsync(id);
+            if (EmptyHelper.IsEmpty(model))
+            {
+                throw new EntityNotFoundException($"Could not found an entity of the requested model with ID {id}");
+            }
+
+            return model!;
         }
 
         public async Task<TEntity> Update(TEntity model)
         {
             context.Entry(model).State = EntityState.Modified;
             await context.SaveChangesAsync();
+
             return model;
         }
 

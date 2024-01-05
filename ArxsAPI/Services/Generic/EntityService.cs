@@ -1,17 +1,14 @@
+using ArxsAPI.Exceptions;
 using ArxsAPI.Models;
 using ArxsAPI.Repositories;
 
 namespace ArxsAPI.Services
 {
-    public abstract class EntityService<TEntity> : IService<TEntity>
+    public abstract class EntityService<TEntity>(EntityRepository<TEntity> repository)
+        : IService<TEntity>
         where TEntity : Entity
     {
-        private readonly EntityRepository<TEntity> Repository;
-        
-        public EntityService(EntityRepository<TEntity> repository)
-        {
-            Repository = repository;
-        }
+        private readonly EntityRepository<TEntity> Repository = repository;
 
         public async Task<TEntity> Add(TEntity model)
         {
@@ -20,12 +17,8 @@ namespace ArxsAPI.Services
 
         public async Task<TEntity> Delete(int id)
         {
-            var deletedModel = await Repository.Delete(id);
-            if (deletedModel == null)
-            {
-                // TODO handle model not found 
-            }
-            return deletedModel;
+            var model = await GetById(id);
+            return await Repository.Delete(model);
         }
 
         public async Task<List<TEntity>> GetAll()
@@ -35,12 +28,7 @@ namespace ArxsAPI.Services
 
         public async Task<TEntity> GetById(int id)
         {
-            var foundModel = await Repository.GetById(id);
-            if (foundModel == null)
-            {
-                 // TODO handle model not found
-            }
-            return foundModel;
+            return await Repository.GetById(id);
         }
 
         public async Task<TEntity> Update(TEntity model)
