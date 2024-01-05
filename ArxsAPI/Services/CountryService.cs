@@ -3,15 +3,11 @@ using ArxsAPI.Repositories;
 
 namespace ArxsAPI.Services
 {
-    public class CountryService : EntityService<Country>
+    public class CountryService(CountryRepository repository)
+        : EntityService<Country>(repository), IImportableEntityService<Country>
     {
-        private readonly CountryRepository Repository;
+        private readonly CountryRepository Repository = repository;
 
-        public CountryService(CountryRepository repository) : base(repository)
-        {
-            Repository = repository;
-        }
-        
         public async Task<List<Country>> Import(Stream file)
         {
             List<Country> Countries = [];

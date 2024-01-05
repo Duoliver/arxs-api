@@ -9,7 +9,7 @@ namespace ArxsAPI.Services
         DriverRepository repository,
         CountryService countryService,
         CsvService csvService
-        ) : EntityService<Driver>(repository)
+        ) : EntityService<Driver>(repository), IImportableEntityService<Driver>
     {
         private readonly DriverRepository Repository = repository;
         private readonly CountryService CountryService = countryService;
