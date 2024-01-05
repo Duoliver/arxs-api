@@ -33,7 +33,7 @@ namespace ArxsAPI.Services
                     int year = int.Parse(row[1]);
                     string trackName = row[2];
 
-                    var track = TrackHelper.FindByName(name, tracks);
+                    var track = TrackHelper.FindByName(trackName, tracks);
 
                     TrackConfiguration trackConfiguration = new(name, year, track.Id);
 
@@ -41,7 +41,7 @@ namespace ArxsAPI.Services
                 }
             );
 
-            // await _repository.AddMany(trackConfigurations);
+            await _repository.AddMany(trackConfigurations);
 
             return trackConfigurations;
         }
