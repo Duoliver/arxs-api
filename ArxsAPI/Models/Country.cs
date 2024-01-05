@@ -24,6 +24,9 @@ namespace ArxsAPI.Models
         [JsonIgnore]
         public ICollection<Manufacturer> Manufacturers { get; } = new List<Manufacturer>();
 
+        [JsonIgnore]
+        public ICollection<Track> Tracks { get; } = new List<Track>();
+
         public Country() { } 
     }
 }

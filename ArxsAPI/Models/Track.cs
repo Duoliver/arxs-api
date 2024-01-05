@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ArxsAPI.Models
 {
     public class Track : Entity
@@ -11,9 +13,16 @@ namespace ArxsAPI.Models
 
         public Country Country { get; set; } = null!;
 
+        [JsonIgnore]
         public ICollection<TrackConfiguration> TrackConfigurations { get; } = new List<TrackConfiguration>();
 
 
         public Track() { }
+
+        public Track(string name, int countryId)
+        {
+            Name = name;
+            CountryId = countryId;
+        }
     }
 }

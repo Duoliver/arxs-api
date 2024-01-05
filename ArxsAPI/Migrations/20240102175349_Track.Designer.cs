@@ -3,6 +3,7 @@ using System;
 using ArxsAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ArxsAPI.Migrations
 {
     [DbContext(typeof(ArxsDbContext))]
-    partial class ArxsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240102175349_Track")]
+    partial class Track
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,35 +232,6 @@ namespace ArxsAPI.Migrations
                     b.ToTable("track", (string)null);
                 });
 
-            modelBuilder.Entity("ArxsAPI.Models.TrackConfiguration", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("name");
-
-                    b.Property<int>("TrackId")
-                        .HasColumnType("integer")
-                        .HasColumnName("track_id");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("integer")
-                        .HasColumnName("year");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TrackId");
-
-                    b.ToTable("track_configuration", (string)null);
-                });
-
             modelBuilder.Entity("ArxsAPI.Models.Car", b =>
                 {
                     b.HasOne("ArxsAPI.Models.Manufacturer", "Manufacturer")
@@ -327,17 +301,6 @@ namespace ArxsAPI.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("ArxsAPI.Models.TrackConfiguration", b =>
-                {
-                    b.HasOne("ArxsAPI.Models.Track", "Track")
-                        .WithMany("TrackConfigurations")
-                        .HasForeignKey("TrackId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Track");
-                });
-
             modelBuilder.Entity("ArxsAPI.Models.Country", b =>
                 {
                     b.Navigation("Manufacturers");
@@ -359,11 +322,6 @@ namespace ArxsAPI.Migrations
             modelBuilder.Entity("ArxsAPI.Models.Team", b =>
                 {
                     b.Navigation("NextTeam");
-                });
-
-            modelBuilder.Entity("ArxsAPI.Models.Track", b =>
-                {
-                    b.Navigation("TrackConfigurations");
                 });
 #pragma warning restore 612, 618
         }
