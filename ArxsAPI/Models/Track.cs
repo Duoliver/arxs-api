@@ -4,7 +4,7 @@ namespace ArxsAPI.Models
 {
     public class Track : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public string? City { get; set; }
 

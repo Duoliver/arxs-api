@@ -4,7 +4,7 @@ namespace ArxsAPI.Models
 {
     public class Manufacturer : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public int CountryId { get; set; }
 

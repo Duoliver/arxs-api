@@ -5,12 +5,12 @@ namespace ArxsAPI.Models
 {
     public class Country : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
         
         [StringLength(3, MinimumLength = 3)]
-        public string Iso3 { get; set; }
+        public string Iso3 { get; set; } = null!;
 
-        public string Adjective { get; set; }
+        public string Adjective { get; set; } = null!;
 
         [JsonIgnore]
         public ICollection<Team> Teams { get; } = new List<Team>();
