@@ -2,9 +2,9 @@ namespace ArxsAPI.Models
 {
     public class Driver : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
-        public string Surname { get; set; }
+        public string Surname { get; set; } = null!;
 
         public DateOnly? DateOfBirth { get; set; }
 

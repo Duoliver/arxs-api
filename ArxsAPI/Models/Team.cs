@@ -2,14 +2,14 @@ namespace ArxsAPI.Models
 {
     public class Team : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public int CountryId { get; set; }
 
         public int? PreviousTeamId { get; set; }
 
 
-        public Country Country { get; set; }
+        public Country Country { get; set; } = null!;
         
         public Team? PreviousTeam { get; set; } = null!;
 

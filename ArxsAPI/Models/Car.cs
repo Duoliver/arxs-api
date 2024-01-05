@@ -4,7 +4,7 @@ namespace ArxsAPI.Models
 {
     public class Car : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [Length(4, 4)]
         public int Year { get; set; }

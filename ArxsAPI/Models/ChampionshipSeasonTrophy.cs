@@ -2,7 +2,7 @@ namespace ArxsAPI.Models
 {
     public class ChampionshipSeasonTrophy : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public int ScoreSystemId { get; set; }
 
