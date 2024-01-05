@@ -8,7 +8,7 @@ namespace ArxsAPI.Services
         ManufacturerRepository repository,
         CountryService countryService,
         CsvService csvService
-        ) : EntityService<Manufacturer>(repository)
+        ) : EntityService<Manufacturer>(repository), IImportableEntityService<Manufacturer>
     {
         private readonly ManufacturerRepository Repository = repository;
         private readonly CountryService CountryService = countryService;

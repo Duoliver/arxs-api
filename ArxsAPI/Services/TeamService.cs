@@ -8,7 +8,7 @@ namespace ArxsAPI.Services
         TeamRepository repository,
         CountryService countryService,
         CsvService csvService
-        ) : EntityService<Team>(repository)
+        ) : EntityService<Team>(repository), IImportableEntityService<Team>
     {
         private readonly TeamRepository Repository = repository;
         private readonly CountryService CountryService = countryService;

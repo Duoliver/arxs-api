@@ -9,7 +9,7 @@ namespace ArxsAPI.Services
         CarRepository repository,
         ManufacturerService manufacturerService,
         CsvService csvService
-        ) : EntityService<Car>(repository)
+        ) : EntityService<Car>(repository), IImportableEntityService<Car>
     {
         private readonly CarRepository Repository = repository;
         private readonly ManufacturerService ManufacturerService = manufacturerService;

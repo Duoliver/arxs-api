@@ -9,7 +9,7 @@ namespace ArxsAPI.Services
         TrackConfigurationRepository repository,
         TrackService trackService,
         CsvService csvService
-        ) : EntityService<TrackConfiguration>(repository)
+        ) : EntityService<TrackConfiguration>(repository), IImportableEntityService<TrackConfiguration>
     {
         private readonly TrackConfigurationRepository _repository = repository;
         private readonly TrackService _trackService = trackService;
