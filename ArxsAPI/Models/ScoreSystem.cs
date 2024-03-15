@@ -2,7 +2,9 @@ namespace ArxsAPI.Models
 {
     public class ScoreSystem : Entity
     {
-        public ICollection<Score> Scores { get; } = new List<Score>();
+        public string Alias { get; set; } = null!;
+
+        public ICollection<Score> Scores { get; set; } = [];
 
         public ScoreSystem() { }
     }

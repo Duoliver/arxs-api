@@ -22,7 +22,7 @@ namespace ArxsAPI.Controllers
             try 
             {
                 return Ok(new PayloadResponse<List<TEntity>>(
-                    await Service.Import(file.OpenReadStream())
+                    await service.Import(file.OpenReadStream())
                 ));
             }
             catch (Exception e)

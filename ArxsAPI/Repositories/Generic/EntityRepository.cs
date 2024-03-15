@@ -11,10 +11,16 @@ namespace ArxsAPI.Repositories
     {
         protected readonly ArxsDbContext context = context;
 
+        public ArxsDbContext GetContext()
+        {
+            return context;
+        }
+
         public async Task<TEntity> Add(TEntity model)
         {
             context.Set<TEntity>().Add(model);
             await context.SaveChangesAsync();
+
             return model;
         }
 
