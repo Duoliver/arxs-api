@@ -8,6 +8,7 @@ namespace ArxsAPI.Data
     public class ArxsDbContext(DbContextOptions<ArxsDbContext> options) : DbContext(options)
     {
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Season> Seasons { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
@@ -31,6 +32,11 @@ namespace ArxsAPI.Data
                 .ToTable("country")
                 .HasKey(c => c.Id);
             modelBuilder.ApplyConfiguration(new CountryMap());
+
+            modelBuilder.Entity<Season>()
+                .ToTable("season")
+                .HasKey(s => s.Id);
+            modelBuilder.ApplyConfiguration(new SeasonMap());
 
             modelBuilder.Entity<Team>()
                 .ToTable("team")
@@ -172,7 +178,7 @@ namespace ArxsAPI.Data
                 .HasOne(cstr => cstr.Round)
                 .WithMany(csr => csr.RoundTrophies)
                 .HasForeignKey(cstr => cstr.RoundId);
-                modelBuilder.ApplyConfiguration(new ChampionshipSeasonTrophyRoundMap());
+            modelBuilder.ApplyConfiguration(new ChampionshipSeasonTrophyRoundMap());
         }
     }
 }

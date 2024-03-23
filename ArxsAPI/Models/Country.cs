@@ -13,19 +13,19 @@ namespace ArxsAPI.Models
         public string Adjective { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<Team> Teams { get; } = new List<Team>();
+        public ICollection<Team> Teams { get; } = [];
 
         [JsonIgnore]
-        public ICollection<Driver> NationalDrivers { get; } = new List<Driver>();
+        public ICollection<Driver> NationalDrivers { get; } = [];
 
         [JsonIgnore]
-        public ICollection<Driver> NativeDrivers { get; } = new List<Driver>();
+        public ICollection<Driver> NativeDrivers { get; } = [];
 
         [JsonIgnore]
-        public ICollection<Manufacturer> Manufacturers { get; } = new List<Manufacturer>();
+        public ICollection<Manufacturer> Manufacturers { get; } = [];
 
         [JsonIgnore]
-        public ICollection<Track> Tracks { get; } = new List<Track>();
+        public ICollection<Track> Tracks { get; } = [];
 
         public Country() { } 
     }

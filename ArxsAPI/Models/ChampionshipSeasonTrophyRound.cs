@@ -17,7 +17,7 @@ namespace ArxsAPI.Models
         [JsonIgnore]
         public ChampionshipSeasonRound Round { get; set; } = null!;
 
-        public ICollection<TeamChampionshipSeasonDriverTrophyRound> DriversResults { get; } = new List<TeamChampionshipSeasonDriverTrophyRound>();
+        public ICollection<TeamChampionshipSeasonDriverTrophyRound> DriversResults { get; } = [];
 
 
         public ChampionshipSeasonTrophyRound () { }

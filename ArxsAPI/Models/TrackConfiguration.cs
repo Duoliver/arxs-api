@@ -14,7 +14,7 @@ namespace ArxsAPI.Models
         public Track Track { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<ChampionshipSeasonRound> Rounds { get; } = new List<ChampionshipSeasonRound>();
+        public ICollection<ChampionshipSeasonRound> Rounds { get; } = [];
 
 
         public TrackConfiguration() { }

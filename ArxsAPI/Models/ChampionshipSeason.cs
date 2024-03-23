@@ -12,13 +12,16 @@ namespace ArxsAPI.Models
         public Championship Championship { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = new List<ChampionshipSeasonTrophy>();
+        public Season Season { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<ChampionshipSeasonRound> Rounds { get; } = new List<ChampionshipSeasonRound>();
+        public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = [];
 
         [JsonIgnore]
-        public ICollection<TeamChampionshipSeason> Entries { get; set; } = new List<TeamChampionshipSeason>();
+        public ICollection<ChampionshipSeasonRound> Rounds { get; } = [];
+
+        [JsonIgnore]
+        public ICollection<TeamChampionshipSeason> Entries { get; set; } = [];
 
 
         public ChampionshipSeason() { }

@@ -20,9 +20,9 @@ namespace ArxsAPI.Models
 
         public Country Country { get; set; } = null!;
         
-        public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = new List<ChampionshipSeasonTrophy>();
+        public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = [];
 
-        public ICollection<TeamChampionshipSeasonDriver> DriversEntries { get; } = new List<TeamChampionshipSeasonDriver>();
+        public ICollection<TeamChampionshipSeasonDriver> DriversEntries { get; } = [];
 
 
         public TeamChampionshipSeason() { }

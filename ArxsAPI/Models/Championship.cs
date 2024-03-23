@@ -18,7 +18,7 @@ namespace ArxsAPI.Models
         public Championship? Successor { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<ChampionshipSeason> ChampionshipSeasons { get; } = new List<ChampionshipSeason>();
+        public ICollection<ChampionshipSeason> ChampionshipSeasons { get; } = [];
 
 
         public Championship() { }

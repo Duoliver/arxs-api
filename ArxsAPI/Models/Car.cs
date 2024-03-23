@@ -14,7 +14,7 @@ namespace ArxsAPI.Models
 
         public Manufacturer Manufacturer { get; set; } = null!;
 
-        public ICollection<TeamCar> TeamCars { get; set; } = new List<TeamCar>();
+        public ICollection<TeamCar> TeamCars { get; set; } = [];
 
 
         public Car() { }
