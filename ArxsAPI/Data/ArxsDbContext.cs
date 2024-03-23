@@ -15,6 +15,11 @@ namespace ArxsAPI.Data
         public virtual DbSet<Track> Tracks { get; set; }
         public virtual DbSet<Score> Scores { get; set; }
         public virtual DbSet<ScoreSystem> ScoreSystems { get; set; }
+        public virtual DbSet<ChampionshipSeason> ChampionshipSeasons { get; set; }
+        public virtual DbSet<ChampionshipSeasonRound> ChampionshipSeasonRounds { get; set; }
+        public virtual DbSet<ChampionshipSeasonRoundRace> ChampionshipSeasonRoundRaces { get; set; }
+        public virtual DbSet<ChampionshipSeasonTrophy> ChampionshipSeasonTrophies { get; set; }
+        public virtual DbSet<ChampionshipSeasonTrophyRound> ChampionshipSeasonTrophyRounds { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -112,7 +117,62 @@ namespace ArxsAPI.Data
                 .HasForeignKey<Championship>(c1 => c1.PredecessorId);
             modelBuilder.ApplyConfiguration(new ChampionshipMap());
 
-            
+            modelBuilder.Entity<ChampionshipSeason>()
+                .ToTable("championship_season")
+                .HasKey(cs => cs.Id);                                                                                                                                                                                       
+            modelBuilder.Entity<ChampionshipSeason>()
+                .HasOne(cs => cs.Championship)
+                .WithMany(c => c.ChampionshipSeasons)
+                .HasForeignKey(cs => cs.ChampionshipId);
+            modelBuilder.ApplyConfiguration(new ChampionshipSeasonMap());      
+
+            modelBuilder.Entity<ChampionshipSeasonRound>()
+                .ToTable("championship_season_round")
+                .HasKey(csr => csr.Id);
+            modelBuilder.Entity<ChampionshipSeasonRound>()
+                .HasOne(csr => csr.ChampionshipSeason)
+                .WithMany(cs => cs.Rounds)
+                .HasForeignKey(csr => csr.ChampionshipSeasonId);
+            modelBuilder.Entity<ChampionshipSeasonRound>()
+                .HasOne(csr => csr.TrackConfiguration)
+                .WithMany(tc => tc.Rounds)
+                .HasForeignKey(csr => csr.TrackConfigurationId);
+            modelBuilder.ApplyConfiguration(new ChampionshipSeasonRoundMap());
+
+            modelBuilder.Entity<ChampionshipSeasonRoundRace>()
+                .ToTable("championship_season_round_race")
+                .HasKey(csrr => csrr.Id);
+            modelBuilder.Entity<ChampionshipSeasonRoundRace>()
+                .HasOne(csrr => csrr.Round)
+                .WithMany(csr => csr.RoundRaces)    
+                .HasForeignKey(csrr => csrr.RoundId);
+            modelBuilder.ApplyConfiguration(new ChampionshipSeasonRoundRaceMap());
+
+            modelBuilder.Entity<ChampionshipSeasonTrophy>()
+                .ToTable("championship_season_trophy")
+                .HasKey(cst => cst.Id);
+            modelBuilder.Entity<ChampionshipSeasonTrophy>()
+                .HasOne(cst => cst.ScoreSystem)
+                .WithMany(ss => ss.Trophies)
+                .HasForeignKey(cst => cst.ScoreSystemId);
+            modelBuilder.Entity<ChampionshipSeasonTrophy>()
+                .HasOne(cst => cst.ChampionshipSeason)
+                .WithMany(cs => cs.Trophies)
+                .HasForeignKey(cst => cst.ChampionshipSeasonId);
+            modelBuilder.ApplyConfiguration(new ChampionshipSeasonTrophyMap());
+
+            modelBuilder.Entity<ChampionshipSeasonTrophyRound>()
+                .ToTable("championship_season_trophy_round")
+                .HasKey(cstr => cstr.Id);
+            modelBuilder.Entity<ChampionshipSeasonTrophyRound>()
+                .HasOne(cstr => cstr.Trophy)
+                .WithMany(cst => cst.TrophyRounds)
+                .HasForeignKey(cstr => cstr.TrophyId);
+            modelBuilder.Entity<ChampionshipSeasonTrophyRound>()
+                .HasOne(cstr => cstr.Round)
+                .WithMany(csr => csr.RoundTrophies)
+                .HasForeignKey(cstr => cstr.RoundId);
+                modelBuilder.ApplyConfiguration(new ChampionshipSeasonTrophyRoundMap());
         }
     }
 }

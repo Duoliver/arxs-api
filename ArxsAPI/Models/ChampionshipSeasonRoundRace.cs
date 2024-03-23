@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using ArxsAPI.Enums;
 
 namespace ArxsAPI.Models
@@ -13,8 +14,10 @@ namespace ArxsAPI.Models
         public int RoundId { get; set; }
 
 
+        [JsonIgnore]
         public ChampionshipSeasonRound Round { get; set; } = null!;
 
+        [JsonIgnore]
         public ICollection<TeamChampionshipSeasonDriverRoundRace> DriversResults { get; } = new List<TeamChampionshipSeasonDriverRoundRace>();
 
 
