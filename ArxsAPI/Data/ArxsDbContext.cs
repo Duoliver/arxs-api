@@ -102,6 +102,17 @@ namespace ArxsAPI.Data
                 .WithMany(ss => ss.Scores)
                 .HasForeignKey(s => s.ScoreSystemId);
             modelBuilder.ApplyConfiguration(new ScoreMap());
+
+            modelBuilder.Entity<Championship>()
+                .ToTable("championship")
+                .HasKey(c => c.Id);
+            modelBuilder.Entity<Championship>()
+                .HasOne(c1 => c1.Predecessor)
+                .WithOne(c2 => c2.Successor)
+                .HasForeignKey<Championship>(c1 => c1.PredecessorId);
+            modelBuilder.ApplyConfiguration(new ChampionshipMap());
+
+            
         }
     }
 }
