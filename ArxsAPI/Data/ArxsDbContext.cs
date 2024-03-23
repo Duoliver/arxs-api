@@ -13,6 +13,8 @@ namespace ArxsAPI.Data
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Track> Tracks { get; set; }
+        public virtual DbSet<Score> Scores { get; set; }
+        public virtual DbSet<ScoreSystem> ScoreSystems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -86,6 +88,20 @@ namespace ArxsAPI.Data
                 .WithMany(t => t.TrackConfigurations)
                 .HasForeignKey(tc => tc.TrackId);
             modelBuilder.ApplyConfiguration(new TrackConfigurationMap());
+
+            modelBuilder.Entity<ScoreSystem>()
+                .ToTable("score_system")
+                .HasKey(ss => ss.Id);
+            modelBuilder.ApplyConfiguration(new ScoreSystemMap());
+
+            modelBuilder.Entity<Score>()
+                .ToTable("score")
+                .HasKey(s => s.Id);
+            modelBuilder.Entity<Score>()
+                .HasOne(s => s.ScoreSystem)
+                .WithMany(ss => ss.Scores)
+                .HasForeignKey(s => s.ScoreSystemId);
+            modelBuilder.ApplyConfiguration(new ScoreMap());
         }
     }
 }
