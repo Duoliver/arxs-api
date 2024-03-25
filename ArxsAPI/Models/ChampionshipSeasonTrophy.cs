@@ -18,7 +18,7 @@ namespace ArxsAPI.Models
         public ChampionshipSeason ChampionshipSeason { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<TeamChampionshipSeason> Entries { get; set; } = [];
+        public ICollection<TeamChampionshipSeasonTrophy> TrophyEntries { get; set; } = [];
 
         [JsonIgnore]
         public ICollection<ChampionshipSeasonTrophyRound> TrophyRounds { get; } = [];

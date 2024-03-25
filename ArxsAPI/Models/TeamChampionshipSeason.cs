@@ -26,7 +26,7 @@ namespace ArxsAPI.Models
         public Country Country { get; set; } = null!;
         
         [JsonIgnore]
-        public ICollection<ChampionshipSeasonTrophy> Trophies { get; } = [];
+        public ICollection<TeamChampionshipSeasonTrophy> TrophyEntries { get; } = [];
 
         [JsonIgnore]
         public ICollection<TeamChampionshipSeasonDriver> DriversEntries { get; } = [];

@@ -13,6 +13,9 @@ namespace ArxsAPI.Mappings
             
             builder.Property(s => s.Position)
                 .HasColumnName("position");
+
+            builder.Property(s => s.PointsAmount)
+                .HasColumnName("points_amount");
             
             builder.Property(s => s.ScoreSystemId)
                 .HasColumnName("score_system_id");

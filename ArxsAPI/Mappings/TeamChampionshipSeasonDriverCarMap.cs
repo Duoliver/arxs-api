@@ -14,7 +14,7 @@ namespace ArxsAPI.Mappings
             builder.Property(t => t.TeamCarId)
                 .HasColumnName("team_car_id");
             
-            builder.Property(t => t.DriverEntry)
+            builder.Property(t => t.DriverEntryId)
                 .HasColumnName("driver_entry_id");
         }
     }

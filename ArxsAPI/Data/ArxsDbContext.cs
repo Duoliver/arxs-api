@@ -214,6 +214,19 @@ namespace ArxsAPI.Data
                 .HasForeignKey(tcs => tcs.CountryId);
             modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonMap());
 
+            modelBuilder.Entity<TeamChampionshipSeasonTrophy>()
+                .ToTable("team_championship_season_trophy")
+                .HasKey(tcst => tcst.Id);
+            modelBuilder.Entity<TeamChampionshipSeasonTrophy>()
+                .HasOne(tcst => tcst.Entry)
+                .WithMany(tcs => tcs.TrophyEntries)
+                .HasForeignKey(tcst => tcst.EntryId);
+            modelBuilder.Entity<TeamChampionshipSeasonTrophy>()
+                .HasOne(tcst => tcst.Trophy)
+                .WithMany(cst => cst.TrophyEntries)
+                .HasForeignKey(tcst => tcst.TrophyId);
+            modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonTrophyMap());
+
             modelBuilder.Entity<TeamChampionshipSeasonDriver>()
                 .ToTable("team_championship_season_driver")
                 .HasKey(tcsd => tcsd.Id);
@@ -229,6 +242,11 @@ namespace ArxsAPI.Data
                 .HasOne(tcsd => tcsd.Country)
                 .WithMany(c => c.DriverEntries)
                 .HasForeignKey(tcsd => tcsd.CountryId);
+            // modelBuilder.Entity<TeamChampionshipSeasonDriver>()
+            //     .HasOne(tcsd => tcsd.EntryCar)
+            //     .WithOne(tcsdc => tcsdc.DriverEntry)
+            //     .HasForeignKey<TeamChampionshipSeasonDriverCar>(tcsdc => tcsdc.DriverEntryId);
+            modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonDriverMap());
             
             modelBuilder.Entity<TeamChampionshipSeasonDriverCar>()
                 .ToTable("team_championship_season_driver_car")
@@ -237,10 +255,6 @@ namespace ArxsAPI.Data
                 .HasOne(tcsdc => tcsdc.TeamCar)
                 .WithMany(tc => tc.DriversVariants)
                 .HasForeignKey(tcsdc => tcsdc.TeamCarId);
-            modelBuilder.Entity<TeamChampionshipSeasonDriverCar>()
-                .HasOne(tcsdc => tcsdc.DriverEntry)
-                .WithOne(tcsd => tcsd.EntryCar)
-                .HasForeignKey<TeamChampionshipSeasonDriverCar>(tcsdc => tcsdc.DriverEntryId);
             modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonDriverCarMap());
 
             modelBuilder.Entity<TeamChampionshipSeasonDriverTrophyRound>()
