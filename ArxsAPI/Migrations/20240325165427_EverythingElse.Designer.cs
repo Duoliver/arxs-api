@@ -3,6 +3,7 @@ using System;
 using ArxsAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ArxsAPI.Migrations
 {
     [DbContext(typeof(ArxsDbContext))]
-    partial class ArxsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240325165427_EverythingElse")]
+    partial class EverythingElse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,9 +80,6 @@ namespace ArxsAPI.Migrations
                         .HasColumnName("predecessor_id");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.HasIndex("PredecessorId")
                         .IsUnique();
@@ -387,9 +387,6 @@ namespace ArxsAPI.Migrations
                         .HasColumnName("alias");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Alias")
-                        .IsUnique();
 
                     b.ToTable("score_system", (string)null);
                 });

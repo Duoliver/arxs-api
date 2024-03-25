@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ArxsAPI.Models
 {
@@ -14,11 +15,14 @@ namespace ArxsAPI.Models
         public int TeamId { get; set; }
 
 
+        [JsonIgnore]
         public Car CarModel { get; set; } = null!;
 
+        [JsonIgnore]
         public Team Team { get; set; } = null!;
 
-        public ICollection<TeamChampionshipSeasonDriverCar> DriversVariants { get; } = new List<TeamChampionshipSeasonDriverCar>();
+        [JsonIgnore]
+        public ICollection<TeamChampionshipSeasonDriverCar> DriversVariants { get; } = [];
 
 
         public TeamCar() { }

@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ArxsAPI.Models
 {
     public class ChampionshipSeasonTrophy : Entity
@@ -9,13 +11,17 @@ namespace ArxsAPI.Models
         public int ChampionshipSeasonId { get; set; }
 
 
+        [JsonIgnore]
         public ScoreSystem ScoreSystem { get; set; } = null!;
 
+        [JsonIgnore]
         public ChampionshipSeason ChampionshipSeason { get; set; } = null!;
 
-        public ICollection<TeamChampionshipSeason> Entries { get; set; } = new List<TeamChampionshipSeason>();
+        [JsonIgnore]
+        public ICollection<TeamChampionshipSeasonTrophy> TrophyEntries { get; set; } = [];
 
-        public ICollection<ChampionshipSeasonTrophyRound> TrophyRounds { get; } = new List<ChampionshipSeasonTrophyRound>();
+        [JsonIgnore]
+        public ICollection<ChampionshipSeasonTrophyRound> TrophyRounds { get; } = [];
 
 
         public ChampionshipSeasonTrophy() { }

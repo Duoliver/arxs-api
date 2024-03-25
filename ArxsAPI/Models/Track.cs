@@ -14,7 +14,7 @@ namespace ArxsAPI.Models
         public Country Country { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<TrackConfiguration> TrackConfigurations { get; } = new List<TrackConfiguration>();
+        public ICollection<TrackConfiguration> TrackConfigurations { get; } = [];
 
 
         public Track() { }

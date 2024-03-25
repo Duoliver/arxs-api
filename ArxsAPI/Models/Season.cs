@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using ArxsAPI.Models;
 
-namespace ArxsAPI
+namespace ArxsAPI.Models
 {
     public class Season : Entity
     {
@@ -11,7 +10,7 @@ namespace ArxsAPI
         public int Year { get; set; }
 
 
-        public ICollection<ChampionshipSeason> ChampionshipSeasons { get; } = new List<ChampionshipSeason>();
+        public ICollection<ChampionshipSeason> ChampionshipSeasons { get; } = [];
 
 
         public Season() { }

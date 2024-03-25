@@ -26,6 +26,10 @@ class Program
         builder.Services.AddScoped<TrackRepository>();
         builder.Services.AddScoped<TrackConfigurationService>();
         builder.Services.AddScoped<TrackConfigurationRepository>();
+        builder.Services.AddScoped<ScoreService>();
+        builder.Services.AddScoped<ScoreRepository>();
+        builder.Services.AddScoped<ScoreSystemService>();
+        builder.Services.AddScoped<ScoreSystemRepository>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters

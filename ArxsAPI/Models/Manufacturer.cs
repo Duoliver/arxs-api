@@ -12,7 +12,7 @@ namespace ArxsAPI.Models
         public Country Country { get; set; } = null!;
 
         [JsonIgnore]
-        public ICollection<Car> Cars { get; } = new List<Car>();
+        public ICollection<Car> Cars { get; } = [];
 
 
         public Manufacturer(string name, int countryId)

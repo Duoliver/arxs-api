@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ArxsAPI.Models
 {
     public class Team : Entity
@@ -15,10 +17,11 @@ namespace ArxsAPI.Models
 
         public Team? NextTeam { get; set; } = null!;
 
-        // TODO descomentar atributos ao integrá-los ao banco
-        // public ICollection<TeamChampionshipSeason> Entries { get; set; } = new List<TeamChampionshipSeason>();
+        [JsonIgnore]
+        public ICollection<TeamChampionshipSeason> Entries { get; set; } = [];
 
-        // public ICollection<TeamCar> Cars { get; set; } = new List<TeamCar>();
+        [JsonIgnore]
+        public ICollection<TeamCar> Cars { get; set; } = [];
 
 
         public Team() { }

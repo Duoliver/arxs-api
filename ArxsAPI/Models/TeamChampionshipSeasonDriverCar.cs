@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ArxsAPI.Models
 {
     public class TeamChampionshipSeasonDriverCar : Entity
@@ -7,8 +9,10 @@ namespace ArxsAPI.Models
         public int DriverEntryId { get; set; }
 
         
+        [JsonIgnore]
         public TeamCar TeamCar { get; set; } = null!;
 
+        [JsonIgnore]
         public TeamChampionshipSeasonDriver DriverEntry { get; set; } = null!;
 
 
