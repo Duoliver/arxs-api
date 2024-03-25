@@ -16,20 +16,22 @@ class Program
         builder.Services.AddScoped<CsvService>();
         builder.Services.AddScoped<TeamRepository>();
         builder.Services.AddScoped<TeamService>();
-        builder.Services.AddScoped<DriverService>();
         builder.Services.AddScoped<DriverRepository>();
-        builder.Services.AddScoped<ManufacturerService>();
+        builder.Services.AddScoped<DriverService>();
         builder.Services.AddScoped<ManufacturerRepository>();
-        builder.Services.AddScoped<CarService>();
+        builder.Services.AddScoped<ManufacturerService>();
         builder.Services.AddScoped<CarRepository>();
-        builder.Services.AddScoped<TrackService>();
+        builder.Services.AddScoped<CarService>();
         builder.Services.AddScoped<TrackRepository>();
-        builder.Services.AddScoped<TrackConfigurationService>();
+        builder.Services.AddScoped<TrackService>();
         builder.Services.AddScoped<TrackConfigurationRepository>();
-        builder.Services.AddScoped<ScoreService>();
+        builder.Services.AddScoped<TrackConfigurationService>();
         builder.Services.AddScoped<ScoreRepository>();
-        builder.Services.AddScoped<ScoreSystemService>();
+        builder.Services.AddScoped<ScoreService>();
         builder.Services.AddScoped<ScoreSystemRepository>();
+        builder.Services.AddScoped<ScoreSystemService>();
+        builder.Services.AddScoped<SeasonRepository>();
+        builder.Services.AddScoped<SeasonService>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters
