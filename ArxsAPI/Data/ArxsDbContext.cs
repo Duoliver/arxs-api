@@ -130,6 +130,10 @@ namespace ArxsAPI.Data
                 .HasOne(cs => cs.Championship)
                 .WithMany(c => c.ChampionshipSeasons)
                 .HasForeignKey(cs => cs.ChampionshipId);
+            modelBuilder.Entity<ChampionshipSeason>()
+                .HasOne(cs => cs.Season)
+                .WithMany(s => s.ChampionshipSeasons)
+                .HasForeignKey(cs => cs.SeasonId);
             modelBuilder.ApplyConfiguration(new ChampionshipSeasonMap());      
 
             modelBuilder.Entity<ChampionshipSeasonRound>()
@@ -179,6 +183,91 @@ namespace ArxsAPI.Data
                 .WithMany(csr => csr.RoundTrophies)
                 .HasForeignKey(cstr => cstr.RoundId);
             modelBuilder.ApplyConfiguration(new ChampionshipSeasonTrophyRoundMap());
+
+            modelBuilder.Entity<TeamCar>()
+                .ToTable("team_car")
+                .HasKey(tc => tc.Id);
+            modelBuilder.Entity<TeamCar>()
+                .HasOne(tc => tc.CarModel)
+                .WithMany(cm => cm.TeamCars)
+                .HasForeignKey(tc => tc.CarModelId);
+            modelBuilder.Entity<TeamCar>()
+                .HasOne(tc => tc.Team)
+                .WithMany(t => t.Cars)
+                .HasForeignKey(tc => tc.TeamId);
+            modelBuilder.ApplyConfiguration(new TeamCarMap());
+
+            modelBuilder.Entity<TeamChampionshipSeason>()
+                .ToTable("team_championship_season")
+                .HasKey(tcs => tcs.Id);
+            modelBuilder.Entity<TeamChampionshipSeason>()
+                .HasOne(tcs => tcs.ChampionshipSeason)
+                .WithMany(cs => cs.Entries)
+                .HasForeignKey(tcs => tcs.ChampionshipSeasonId);
+            modelBuilder.Entity<TeamChampionshipSeason>()
+                .HasOne(tcs => tcs.Team)
+                .WithMany(t => t.Entries)
+                .HasForeignKey(tcs => tcs.TeamId);
+            modelBuilder.Entity<TeamChampionshipSeason>()
+                .HasOne(tcs => tcs.Country)
+                .WithMany(c => c.Entries)
+                .HasForeignKey(tcs => tcs.CountryId);
+            modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonMap());
+
+            modelBuilder.Entity<TeamChampionshipSeasonDriver>()
+                .ToTable("team_championship_season_driver")
+                .HasKey(tcsd => tcsd.Id);
+            modelBuilder.Entity<TeamChampionshipSeasonDriver>()
+                .HasOne(tcsd => tcsd.Driver)
+                .WithMany(d => d.TeamsEntries)
+                .HasForeignKey(tcsd => tcsd.DriverId);
+            modelBuilder.Entity<TeamChampionshipSeasonDriver>()
+                .HasOne(tcsd => tcsd.Entry)
+                .WithMany(tcs => tcs.DriversEntries)
+                .HasForeignKey(tcsd => tcsd.EntryId);
+            modelBuilder.Entity<TeamChampionshipSeasonDriver>()
+                .HasOne(tcsd => tcsd.Country)
+                .WithMany(c => c.DriverEntries)
+                .HasForeignKey(tcsd => tcsd.CountryId);
+            
+            modelBuilder.Entity<TeamChampionshipSeasonDriverCar>()
+                .ToTable("team_championship_season_driver_car")
+                .HasKey(tcsdc => tcsdc.Id);
+            modelBuilder.Entity<TeamChampionshipSeasonDriverCar>()
+                .HasOne(tcsdc => tcsdc.TeamCar)
+                .WithMany(tc => tc.DriversVariants)
+                .HasForeignKey(tcsdc => tcsdc.TeamCarId);
+            modelBuilder.Entity<TeamChampionshipSeasonDriverCar>()
+                .HasOne(tcsdc => tcsdc.DriverEntry)
+                .WithOne(tcsd => tcsd.EntryCar)
+                .HasForeignKey<TeamChampionshipSeasonDriverCar>(tcsdc => tcsdc.DriverEntryId);
+            modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonDriverCarMap());
+
+            modelBuilder.Entity<TeamChampionshipSeasonDriverTrophyRound>()
+                .ToTable("team_championship_season_driver_trophy_round")
+                .HasKey(tcsdtr => tcsdtr.Id);
+            modelBuilder.Entity<TeamChampionshipSeasonDriverTrophyRound>()
+                .HasOne(tcsdtr => tcsdtr.DriverEntry)
+                .WithMany(tcsd => tcsd.EntryTrophyRounds)
+                .HasForeignKey(tcsdtr => tcsdtr.TrophyRoundId);
+            modelBuilder.Entity<TeamChampionshipSeasonDriverTrophyRound>()
+                .HasOne(tcsdtr => tcsdtr.TrophyRound)
+                .WithMany(cstr => cstr.DriversResults)
+                .HasForeignKey(tcsdtr => tcsdtr.TrophyRoundId);
+            modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonDriverTrophyRoundMap());
+
+            modelBuilder.Entity<TeamChampionshipSeasonDriverRoundRace>()
+                .ToTable("team_championship_season_driver_round_race")
+                .HasKey(tcsdrr => tcsdrr.Id);
+            modelBuilder.Entity<TeamChampionshipSeasonDriverRoundRace>()
+                .HasOne(tcsdrr => tcsdrr.DriverEntry)
+                .WithMany(tcsd => tcsd.EntryRoundRaces)
+                .HasForeignKey(tcsdrr => tcsdrr.DriverEntryId);
+            modelBuilder.Entity<TeamChampionshipSeasonDriverRoundRace>()
+                .HasOne(tcsdrr => tcsdrr.RoundRace)
+                .WithMany(csrr => csrr.DriversResults)
+                .HasForeignKey(tcsdrr => tcsdrr.RoundRaceId);
+            modelBuilder.ApplyConfiguration(new TeamChampionshipSeasonDriverRoundRaceMap());
         }
     }
 }

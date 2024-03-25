@@ -12,6 +12,7 @@ namespace ArxsAPI.Models
 
         public string Adjective { get; set; } = null!;
 
+
         [JsonIgnore]
         public ICollection<Team> Teams { get; } = [];
 
@@ -26,6 +27,12 @@ namespace ArxsAPI.Models
 
         [JsonIgnore]
         public ICollection<Track> Tracks { get; } = [];
+
+        [JsonIgnore]
+        public ICollection<TeamChampionshipSeason> Entries { get; } = [];
+
+        [JsonIgnore]
+        public ICollection<TeamChampionshipSeasonDriver> DriverEntries { get; } = [];
 
         public Country() { } 
     }
