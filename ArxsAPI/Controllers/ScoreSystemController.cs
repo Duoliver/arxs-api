@@ -1,3 +1,4 @@
+using ArxsAPI.Exceptions;
 using ArxsAPI.Models;
 using ArxsAPI.Responses;
 using ArxsAPI.Services;
@@ -25,7 +26,11 @@ namespace ArxsAPI.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(new Response(e.Message, false));
+                if (e is InvalidRequestException)
+                {
+                    return BadRequest(new Response(e.Message, false));
+                }
+                throw;
             }
         }
     }

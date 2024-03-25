@@ -1,5 +1,6 @@
 using System.Transactions;
 using ArxsAPI.Common;
+using ArxsAPI.Exceptions;
 using ArxsAPI.Models;
 using ArxsAPI.Repositories;
 using DTOs;
@@ -7,16 +8,14 @@ using DTOs;
 namespace ArxsAPI.Services
 {
     public class ScoreSystemService(
-        ScoreSystemRepository repository,
-        ScoreService scoreService
+        ScoreSystemRepository repository
         ) : EntityService<ScoreSystem>(repository)
     {
         private readonly ScoreSystemRepository _repository = repository;
-        private readonly ScoreService _scoreService = scoreService;
 
         public async Task<List<ScoreSystem>> CreateMany(List<CreateScoreSystemRequestDTO> requests)
         {
-            // var transaction = _repository.GetContext().Database.BeginTransaction();
+            var transaction = _repository.GetContext().Database.BeginTransaction();
             List<ScoreSystem> scoreSystems = [];
             try {
                 int requestIndex = 0;
@@ -24,7 +23,7 @@ namespace ArxsAPI.Services
                     {
                         if (EmptyHelper.IsEmpty(request.Alias) || EmptyHelper.IsEmpty(request.Scores))
                         {
-                            // throw new InvalidRequestException()
+                            throw new InvalidRequestException($"No alias or score list were sent for the score system of index {requestIndex}");
                         }
                         ScoreSystem scoreSystem;
                         int scoreIndex = 0;
@@ -45,34 +44,20 @@ namespace ArxsAPI.Services
                         requestIndex ++;
                     }
                 );
+                await _repository.AddMany(scoreSystems);
+                transaction.Commit();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 if (e is TransactionException)
                 {
+                    await transaction.RollbackAsync();
 
                 }
-                else {
-                    throw;
-                }
+                throw;
             }
-            await Task.Run(() => {});
             return scoreSystems;
-            // try
-            // {
-
-            //     // await _repository.AddMany(scoreSystems);
-
-            //     // await _scoreService.CreateMany(scores);
-            //     // transaction.Commit();
-            //     // await transaction.RollbackAsync();
-            // }
-            // catch (Exception)
-            // {
-            //     // transaction.Rollback();
-            // }
-            // Precisa retornar com a lista de pontos
         }
     }
 }
