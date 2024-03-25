@@ -31,6 +31,9 @@ namespace ArxsAPI.Data
             modelBuilder.Entity<Country>()
                 .ToTable("country")
                 .HasKey(c => c.Id);
+            modelBuilder.Entity<Country>()
+                .HasIndex(c => c.Name)
+                .IsUnique();
             modelBuilder.ApplyConfiguration(new CountryMap());
 
             modelBuilder.Entity<Season>()
@@ -41,6 +44,9 @@ namespace ArxsAPI.Data
             modelBuilder.Entity<Team>()
                 .ToTable("team")
                 .HasKey(t => t.Id);
+            modelBuilder.Entity<Team>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
             modelBuilder.Entity<Team>()
                 .HasOne(t => t.PreviousTeam)
                 .WithOne(pt => pt.NextTeam)
@@ -68,6 +74,9 @@ namespace ArxsAPI.Data
                 .ToTable("manufacturer")
                 .HasKey(m => m.Id);
             modelBuilder.Entity<Manufacturer>()
+                .HasIndex(m => m.Name)
+                .IsUnique();
+            modelBuilder.Entity<Manufacturer>()
                 .HasOne(m => m.Country)
                 .WithMany(c => c.Manufacturers)
                 .HasForeignKey(m => m.CountryId);
@@ -86,6 +95,9 @@ namespace ArxsAPI.Data
                 .ToTable("track")
                 .HasKey(c => c.Id);
             modelBuilder.Entity<Track>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+            modelBuilder.Entity<Track>()
                 .HasOne(t => t.Country)
                 .WithMany(c => c.Tracks)
                 .HasForeignKey(t => t.CountryId);
@@ -103,6 +115,9 @@ namespace ArxsAPI.Data
             modelBuilder.Entity<ScoreSystem>()
                 .ToTable("score_system")
                 .HasKey(ss => ss.Id);
+            modelBuilder.Entity<ScoreSystem>()
+                .HasIndex(ss => ss.Alias)
+                .IsUnique();
             modelBuilder.ApplyConfiguration(new ScoreSystemMap());
 
             modelBuilder.Entity<Score>()
@@ -117,6 +132,9 @@ namespace ArxsAPI.Data
             modelBuilder.Entity<Championship>()
                 .ToTable("championship")
                 .HasKey(c => c.Id);
+            modelBuilder.Entity<Championship>()
+                .HasIndex(c => c.Name)
+                .IsUnique();
             modelBuilder.Entity<Championship>()
                 .HasOne(c1 => c1.Predecessor)
                 .WithOne(c2 => c2.Successor)
