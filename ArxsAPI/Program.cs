@@ -1,4 +1,5 @@
 ﻿using ArxsAPI.Data;
+using ArxsAPI.Models;
 using ArxsAPI.Repositories;
 using ArxsAPI.Services;
 
@@ -32,6 +33,8 @@ class Program
         builder.Services.AddScoped<ScoreSystemService>();
         builder.Services.AddScoped<SeasonRepository>();
         builder.Services.AddScoped<SeasonService>();
+        builder.Services.AddScoped<ChampionshipRepository>();
+        builder.Services.AddScoped<ChampionshipService>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters

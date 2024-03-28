@@ -22,5 +22,12 @@ namespace ArxsAPI.Models
 
 
         public Championship() { }
+
+        public Championship(string name, string alias)
+        {
+            Name = name;
+            Alias = alias;
+            PredecessorId = null;
+        }
     }
 }
