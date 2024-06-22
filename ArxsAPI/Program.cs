@@ -1,7 +1,7 @@
 ﻿using ArxsAPI.Data;
-using ArxsAPI.Models;
 using ArxsAPI.Repositories;
 using ArxsAPI.Services;
+using Microsoft.OpenApi.Models;
 
 namespace ArxsAPI;
 
@@ -12,6 +12,10 @@ class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddArxsDbService(builder.Configuration);
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "ARXSDb", Version = "v1" });
+        });
         builder.Services.AddScoped<CountryRepository>();
         builder.Services.AddScoped<CountryService>();
         builder.Services.AddScoped<CsvService>();
@@ -44,6 +48,13 @@ class Program
             });
 
         var app = builder.Build();
+
+        app.UseSwagger();
+        app.UseSwaggerUI(opt =>
+        {
+            opt.SwaggerEndpoint("/swagger/v1/swagger.json", "ARXSDb V1");
+        });
+
         app.UsePathBase("/api");
         app.UseRouting();
         app.MapControllers();

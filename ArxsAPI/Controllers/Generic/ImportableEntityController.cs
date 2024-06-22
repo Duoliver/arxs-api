@@ -12,7 +12,7 @@ namespace ArxsAPI.Controllers
     {
         [HttpPost("import")]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> Import([FromForm] IFormFile file)
+        public async Task<IActionResult> Import(IFormFile file)
         {
             if (EmptyHelper.IsEmpty(file))
             {
