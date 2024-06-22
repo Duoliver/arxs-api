@@ -25,5 +25,11 @@ namespace ArxsAPI.Models
 
 
         public ChampionshipSeason() { }
+
+        public ChampionshipSeason(int seasonId, int championshipId)
+        {
+            this.SeasonId = seasonId;
+            this.ChampionshipId = championshipId;
+        }
     }
 }
