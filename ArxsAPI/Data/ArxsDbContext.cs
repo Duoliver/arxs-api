@@ -144,7 +144,10 @@ namespace ArxsAPI.Data
 
             modelBuilder.Entity<Trophy>()
                 .ToTable("trophy")
-                .HasKey(c => c.Id);
+                .HasKey(t => t.Id);
+            modelBuilder.Entity<Trophy>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
             modelBuilder.ApplyConfiguration(new TrophyMap());
 
             modelBuilder.Entity<ChampionshipSeason>()
