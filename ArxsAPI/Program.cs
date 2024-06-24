@@ -41,6 +41,8 @@ class Program
         builder.Services.AddScoped<ChampionshipService>();
         builder.Services.AddScoped<ChampionshipSeasonRepository>();
         builder.Services.AddScoped<ChampionshipSeasonService>();
+        builder.Services.AddScoped<TrophyRepository>();
+        builder.Services.AddScoped<TrophyService>();
         builder.Services
             .AddControllers(options => {
                 var jsonInputFormatter = options.InputFormatters

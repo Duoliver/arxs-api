@@ -3,11 +3,11 @@ using ArxsAPI.Enums;
 
 namespace ArxsAPI.Models
 {
-    public class Trophy : Entity
+    public class Trophy(string name, TrophyType type) : Entity
     {
-        public string Name { get; set; } = null!;
+        public string Name { get; set; } = name;
 
-        public TrophyType Type { get; set; }
+        public TrophyType Type { get; set; } = type;
 
 
         [JsonIgnore]
