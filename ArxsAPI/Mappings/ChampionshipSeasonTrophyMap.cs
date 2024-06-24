@@ -14,6 +14,9 @@ namespace ArxsAPI.Mappings
             builder.Property(c => c.Name)
                 .HasColumnName("name");
 
+            builder.Property(c => c.TrophyId)
+                .HasColumnName("trophy_id");
+
             builder.Property(c => c.ScoreSystemId)
                 .HasColumnName("score_system_id");
             

@@ -27,6 +27,7 @@ namespace ArxsAPI.Data
             modelBuilder.HasPostgresEnum<RaceType>();
             modelBuilder.HasPostgresEnum<RoundRaceDriverStatus>();
             modelBuilder.HasPostgresEnum<TrophyRoundDriverStatus>();
+            modelBuilder.HasPostgresEnum<TrophyType>();
 
             modelBuilder.Entity<Country>()
                 .ToTable("country")
@@ -141,6 +142,14 @@ namespace ArxsAPI.Data
                 .HasForeignKey<Championship>(c1 => c1.PredecessorId);
             modelBuilder.ApplyConfiguration(new ChampionshipMap());
 
+            modelBuilder.Entity<Trophy>()
+                .ToTable("trophy")
+                .HasKey(t => t.Id);
+            modelBuilder.Entity<Trophy>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+            modelBuilder.ApplyConfiguration(new TrophyMap());
+
             modelBuilder.Entity<ChampionshipSeason>()
                 .ToTable("championship_season")
                 .HasKey(cs => cs.Id);                                                                                                                                                                                       
@@ -187,6 +196,10 @@ namespace ArxsAPI.Data
                 .HasOne(cst => cst.ChampionshipSeason)
                 .WithMany(cs => cs.Trophies)
                 .HasForeignKey(cst => cst.ChampionshipSeasonId);
+            modelBuilder.Entity<ChampionshipSeasonTrophy>()
+                .HasOne(cst => cst.Trophy)
+                .WithMany(t => t.ChampionshipSeasonTrophies)
+                .HasForeignKey(cst => cst.TrophyId);
             modelBuilder.ApplyConfiguration(new ChampionshipSeasonTrophyMap());
 
             modelBuilder.Entity<ChampionshipSeasonTrophyRound>()

@@ -12,7 +12,7 @@ namespace ArxsAPI.Controllers
     {
         [HttpPost("import")]
         [Consumes("multipart/form-data")]
-        public async Task<IActionResult> Import([FromForm] IFormFile file)
+        public async Task<IActionResult> Import(IFormFile file)
         {
             if (EmptyHelper.IsEmpty(file))
             {
@@ -27,6 +27,7 @@ namespace ArxsAPI.Controllers
             }
             catch (Exception e)
             {
+                // TODO: Status error conditional to exception. Not all should return 400
                 return BadRequest(new Response(e.Message, false));
             }
         }

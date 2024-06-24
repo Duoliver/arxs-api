@@ -14,5 +14,11 @@ namespace ArxsAPI.Models
 
 
         public Season() { }
+
+        public Season(string name, int year)
+        {
+            Name = name;
+            Year = year;
+        }
     }
 }
