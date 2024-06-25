@@ -9,6 +9,8 @@ namespace ArxsAPI.Models
         [Length(4, 4)]
         public int Year { get; set; }
 
+        public string? Alias { get; set; }
+
         public int ManufacturerId { get; set; }
 
 
@@ -19,11 +21,12 @@ namespace ArxsAPI.Models
 
         public Car() { }
 
-        public Car(string name, int year, int manufacturerId)
+        public Car(string name, int year, string alias, int manufacturerId)
         {
             Name = name;
             Year = year;
             ManufacturerId = manufacturerId;
+            Alias = alias;
         }
     }
 }

@@ -17,6 +17,9 @@ namespace ArxsAPI.Mappings
             builder.Property(c => c.Year)
                 .HasColumnName("year");
             
+            builder.Property(c => c.Alias)
+                .HasColumnName("alias");
+            
             builder.Property(c => c.ManufacturerId)
                 .HasColumnName("manufacturer_id");
         }

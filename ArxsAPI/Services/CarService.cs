@@ -32,10 +32,11 @@ namespace ArxsAPI.Services
                     string name = row[0];
                     string manufacturerName = row[1];
                     int year = int.Parse(row[2]);
+                    string alias = row[3];
 
                     var manufacturer = ManufacturerHelper.FindManufacturer(manufacturerName, manufacturers);
 
-                    cars.Add(new Car(name, year, manufacturer.Id));
+                    cars.Add(new Car(name, year, alias, manufacturer.Id));
                 }
             );
 
