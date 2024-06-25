@@ -87,6 +87,9 @@ namespace ArxsAPI.Data
                 .ToTable("car")
                 .HasKey(c => c.Id);
             modelBuilder.Entity<Car>()
+                .HasIndex(c => c.Alias)
+                .IsUnique();
+            modelBuilder.Entity<Car>()
                 .HasOne(c => c.Manufacturer)
                 .WithMany(m => m.Cars)
                 .HasForeignKey(c => c.ManufacturerId);
@@ -135,6 +138,9 @@ namespace ArxsAPI.Data
                 .HasKey(c => c.Id);
             modelBuilder.Entity<Championship>()
                 .HasIndex(c => c.Name)
+                .IsUnique();
+            modelBuilder.Entity<Championship>()
+                .HasIndex(c => c.Alias)
                 .IsUnique();
             modelBuilder.Entity<Championship>()
                 .HasOne(c1 => c1.Predecessor)
