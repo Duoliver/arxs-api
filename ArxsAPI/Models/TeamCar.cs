@@ -26,5 +26,13 @@ namespace ArxsAPI.Models
 
 
         public TeamCar() { }
+
+        public TeamCar(string suffix, int year, int carModelId, int teamId)
+        {
+            Suffix = suffix;
+            Year = year;
+            CarModelId = carModelId;
+            TeamId = teamId;
+        }
     }
 }

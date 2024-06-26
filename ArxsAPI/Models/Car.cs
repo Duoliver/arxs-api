@@ -28,5 +28,10 @@ namespace ArxsAPI.Models
             ManufacturerId = manufacturerId;
             Alias = alias;
         }
+
+        public override string ToString()
+        {
+            return $"{Year} {Name} ({Alias})";
+        }
     }
 }
